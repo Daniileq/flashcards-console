@@ -4,11 +4,14 @@ const fs = require("fs");
 const { resolve } = require("path");
 // const { resolve } = require("path");
 
-class Model {
+class Questansw {
   constructor(question, answer) {
     this.question = question;
     this.answer = answer;
   }
+}
+
+class Model {
   getData() {
     function readDir() {
       return new Promise((resolve, rejects) => {
@@ -31,14 +34,21 @@ class Model {
     readDir()
       .then((fileNames) => fileNames.map((file) => readFile(file, "utf-8")))
       .then((promises) => Promise.all(promises))
-      .then((er) => er.map(el=>{
-        return el.match(/.+\n/gi)
-      }))
-      .then(arr =>arr.flat(1).filter(el=> el !== '---\n'))
-      .then(arr => arr.map((el,i)=>);
+      .then((er) =>
+        er.map((el) => {
+          return el.match(/.+\n/gi);
+        })
+      )
+      .then((arr) => arr.flat(1).filter((el) => el !== "---\n"))
+      .then((arr) =>
+        arr.map((el, i, arr) => {
+          if (i % 2 != 0) i++;
+          return new Questansw(arr[i], arr[i + 1]);
+        })
+      )
+      .then(console.log);
   }
 }
-
 
 const r = new Model();
 r.getData();

@@ -7,3 +7,5 @@ const view = new View
 const controller = new Controller(model, view)
 
 controller.run()
+
+console.log(model.getData())

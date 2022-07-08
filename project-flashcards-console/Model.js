@@ -1,8 +1,5 @@
-// const { rejects } = require("assert");
-const { rejects } = require("assert");
 const fs = require("fs");
-const { resolve } = require("path");
-// const { resolve } = require("path");
+
 
 class Questansw {
   constructor(question, answer) {
@@ -49,8 +46,5 @@ class Model {
       .then(console.log);
   }
 }
-
-const r = new Model();
-r.getData();
 
 module.exports = Model;

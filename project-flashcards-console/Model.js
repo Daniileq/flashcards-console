@@ -50,7 +50,4 @@ class Model {
   }
 }
 
-const r = new Model();
-r.getData();
-
 module.exports = Model;

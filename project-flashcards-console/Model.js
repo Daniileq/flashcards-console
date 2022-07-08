@@ -12,35 +12,34 @@ class Model {
   getData() {
     function readDir() {
       return new Promise((resolve, rejects) => {
-        let arr = [];
-        
         fs.readdir("./topics/", (err, data) => {
           if (err) return rejects(err);
-          data.forEach(element => {
-           arr.push()
-          });
           return resolve(data);
         });
       });
     }
+
     function readFile(path, code) {
       return new Promise((resolve, rejects) => {
-        
         fs.readFile(`./topics/${path}`, code, (err, file) => {
-          if (err) {
-            return rejects(err);
-          }
+          if (err) return rejects(err);
           return resolve(file);
         });
       });
     }
 
     readDir()
-      .then((data) => data)
-      .then((e) => readFile())
-      .then((r) => console.log(r));
+      .then((fileNames) => fileNames.map((file) => readFile(file, "utf-8")))
+      .then((promises) => Promise.all(promises))
+      .then((er) => er.map(el=>{
+        return el.match(/.+\n/gi)
+      }))
+      .then(arr =>arr.flat(1).filter(el=> el !== '---\n'))
+      .then(arr => arr.map((el,i)=>);
   }
 }
+
+
 const r = new Model();
 r.getData();
 

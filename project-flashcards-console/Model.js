@@ -1,12 +1,5 @@
 const fs = require("fs");
 
-class Questansw {
-  constructor(question, answer) {
-    this.question = question;
-    this.answer = answer;
-  }
-}
-
 class Model {
   getMenu() {
     return new Promise((resolve, rejects) => {
@@ -27,7 +20,7 @@ class Model {
           .forEach((el, i, arr) => {
             if (i % 2 === 0) obj[arr[i]] = arr[i + 1];
           });
-        return resolve(arrRes);
+        return resolve(obj);
       });
     });
   }

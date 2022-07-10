@@ -14,7 +14,7 @@ class Controller {
   }
 
   async run() {
-    const menuNum = await this.view.showMenu();
+    const menuNum = await this.view.showMenu(this.topics);
     const topic = this.topics[menuNum - 1];
     const questList = await this.model.getQwest(topic);
     for (let i = 0; i < questList; i++) {

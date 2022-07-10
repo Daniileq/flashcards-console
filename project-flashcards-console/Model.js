@@ -52,8 +52,8 @@ class Model {
   //   .then((e) => run(arrRes));
 }
 
-const runner = new Model();
-runner.getQwest("1.Bird.txt").then(console.log);
+// const runner = new Model();
+// runner.getQwest("1.Bird.txt").then(console.log);
 
 // const run = (arrRes) => {
 //   if (i < arrRes.length - 1) {

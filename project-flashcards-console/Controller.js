@@ -17,20 +17,12 @@ class Controller {
     const menuNum = await this.view.showMenu();
     const topic = this.topics[menuNum - 1];
     const questList = await this.model.getQwest(topic);
-    for (let i = 0; i < questList; i++) {
-      const answer = await this.view.showQuest(questList[i].question);
-      const resultUser =
-        questList[i].answer.toLowerCase() === answer.toLowerCase();
+    for (let key in questList) {
+      const answer = await this.view.showQuest(key);
+      const resultUser = questList[key].toLowerCase() === answer.toLowerCase();
       await this.view.showResult(resultUser);
     }
     this.run();
-
-    // Просим экземпляр класса модели прочитать папку со всеми темами и составить меню.
-    // Попутно передаем метод контроллера this.printTopicsController,
-    // так как нам нужно отправить сформинованное меню на вывод в экземпляр класса view
-    // после того, как завершится асинхронная операция чтения папки
-    // Здесь this.printTopicsController — является callback'ом
-    // this.model.getMenu(this.printTopicsController);
   }
 }
 

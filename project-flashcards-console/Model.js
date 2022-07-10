@@ -4,8 +4,6 @@ const fs = require("fs");
 //   output: process.stdout,
 // });
 
-let i = 0;
-
 class Questansw {
   constructor(question, answer) {
     this.question = question;
@@ -27,11 +25,12 @@ class Model {
     return new Promise((resolve, rejects) => {
       fs.readFile(`./topics/${path}`, "utf8", (err, file) => {
         if (err) return rejects(err);
-        let text = file.split("\n").filter((el) => el != "");
-        text.forEach((el, i, arr) => {
-          if (i % 2 === 0) arrRes.push(new Questansw(arr[i], arr[i + 1]));
-        });
-
+        file
+          .split("\n")
+          .filter((el) => el != "")
+          .forEach((el, i, arr) => {
+            if (i % 2 === 0) arrRes.push(new Questansw(arr[i], arr[i + 1]));
+          });
         return resolve(arrRes);
       });
     });
@@ -53,8 +52,8 @@ class Model {
   //   .then((e) => run(arrRes));
 }
 
-// const runner = new Model();
-// runner.getQwest("1.Bird.txt").then(console.log);
+const runner = new Model();
+runner.getQwest("1.Bird.txt").then(console.log);
 
 // const run = (arrRes) => {
 //   if (i < arrRes.length - 1) {

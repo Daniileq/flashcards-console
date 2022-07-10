@@ -16,13 +16,11 @@ class View {
     });
   }
 
-
-  showQuest(quest){
-    return new Promise((res,rej)=>{
-      rl.question(`${quest}\nВведите ответ :` (answer)=> res(answer))
-    })
+  showQuest(quest) {
+    return new Promise((res, rej) => {
+      rl.question(`${quest}\nВведите ответ :`, (answer) => res(answer));
+    });
   }
-
 }
 
 module.exports = View;

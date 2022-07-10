@@ -21,6 +21,11 @@ class View {
       rl.question(`${quest}\nВведите ответ :`, (answer) => res(answer));
     });
   }
+
+  showResult(result) {
+    if (result) return console.log("!!!Верно!!!");
+    return console.log("!!!Неверно!!!");
+  }
 }
 
 module.exports = View;
